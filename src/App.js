@@ -34,23 +34,23 @@ function App() {
     }
   }
   return (
-    <div className="App">
+    <div className="App" >
       <Input.Group compact>
         <Input placeholder="Input Task" style={{ width: '200px' }} onChange={handleChange} value={input}/>
         <Button type="primary" onClick={handleInput}>Submit</Button>
       </Input.Group>
-      <div className="site-card-wrapper">
-        <Row gutter={12}>
-          <Col span={4}>
+      <div className="site-card-wrapper" >
+        <Row gutter={16}>
+          <Col span={6}>
             <Cards data={data} setData={setData} title={"Backlog"} stage={1}/>
           </Col>
-          <Col span={4}>
+          <Col span={6}>
             <Cards data={data} setData={setData} title={"On Going"} stage={2}/>
           </Col>
-          <Col span={4}>
+          <Col span={6}>
             <Cards data={data} setData={setData} title={"Testing"} stage={3}/>
           </Col>
-          <Col span={4}>
+          <Col span={6}>
             <Cards data={data} setData={setData} title={"Done"} stage={4}/>
           </Col>
         </Row>
