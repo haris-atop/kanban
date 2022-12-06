@@ -31,12 +31,13 @@ const Cards=({data,setData,title,stage})=>{
                 {data.filter(f=>f.stage==stage).map(item=>{
                   return (
                     <>
-                      <li>{item.name}</li>
+                      <li style={{listStyleType: 'none'}}>{item.name}</li>
                       {item.stage==1
                       ?<Button type="primary" onClick={()=>handleBack(item)} disabled>back</Button>
                       :<Button type="primary" onClick={()=>handleBack(item)}>back</Button>}
                       
                       <Button type="primary" onClick={()=>handleDelete(item)} danger>delete</Button>
+
                       {item.stage==4
                       ?<Button type="primary" onClick={()=>handleNext(item)} disabled>next</Button>
                       :<Button type="primary" onClick={()=>handleNext(item)}>next</Button>}

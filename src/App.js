@@ -10,10 +10,20 @@ import {
 
 function App() {
   const [input,setInput]=useState("")
-  const [data,setData]=useState([{
-    name:"progress1",
-    stage:1
-    }])
+  const [data,setData]=useState([
+    {
+      name:"Task 1",
+      stage:1
+    },
+    {
+      name:"Task 2",
+      stage:2
+    },
+    {
+      name:"Task 3",
+      stage:1
+    }
+  ])
   const handleChange=(e)=>{
     setInput(e.target.value)
   }
@@ -26,7 +36,7 @@ function App() {
   return (
     <div className="App">
       <Input.Group compact>
-        <Input style={{ width: '200px' }} onChange={handleChange} value={input}/>
+        <Input placeholder="Input Task" style={{ width: '200px' }} onChange={handleChange} value={input}/>
         <Button type="primary" onClick={handleInput}>Submit</Button>
       </Input.Group>
       <div className="site-card-wrapper">

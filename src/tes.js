@@ -15,3 +15,6 @@ let data=[
 let temp=data
 temp.splice(0,1)
 console.log(temp)
+let a=10
+var b = parseFloat((a/60/1440*100).toFixed(2));
+console.log(b)
