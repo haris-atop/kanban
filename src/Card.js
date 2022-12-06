@@ -4,26 +4,28 @@ import {
     Card,
   } from 'antd';
 const Cards=({data,setData,title,stage})=>{
-  const refresh=useRef(1)
   const handleNext=(item)=>{
-    // let temp=data
-    // let index=temp.indexOf(item)
-    // temp.splice(index,1)
-    // setData(temp)
-    // console.log("ieu d",temp)
-    
+    let temp=[...data]
+    let index=temp.indexOf(item)
+    if (temp[index].stage<4){
+      temp[index].stage+=1
+      setData(temp)
+    }
+  }
+  const handleBack=(item)=>{
+    let temp=[...data]
+    let index=temp.indexOf(item)
+    if (temp[index].stage>1){
+      temp[index].stage-=1
+      setData(temp)
+    }
   }
   const handleDelete=(item)=>{
-    let temp=data
+    let temp=[...data]
     let index=temp.indexOf(item)
     temp.splice(index,1)
     setData(temp)
-    refresh.current=refresh.current+1
-    console.log(refresh.current)
   }
-  useEffect(()=>{
-    console.log("refresh")
-  },[data,setData])
     return(
         <Card title={title} bordered={true}>
               <ul>
@@ -31,7 +33,7 @@ const Cards=({data,setData,title,stage})=>{
                   return (
                     <>
                       <li>{item.name}</li>
-                      <Button type="primary">back</Button>
+                      <Button type="primary" onClick={()=>handleBack(item)}>back</Button>
                       <Button type="primary" onClick={()=>handleDelete(item)} danger>delete</Button>
                       <Button type="primary" onClick={()=>handleNext(item)}>next</Button>
                     </>
