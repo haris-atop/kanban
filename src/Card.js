@@ -1,4 +1,3 @@
-import {useEffect,useRef} from 'react'
 import {
     Button,
     Card,
@@ -33,9 +32,15 @@ const Cards=({data,setData,title,stage})=>{
                   return (
                     <>
                       <li>{item.name}</li>
-                      <Button type="primary" onClick={()=>handleBack(item)}>back</Button>
+                      {item.stage==1
+                      ?<Button type="primary" onClick={()=>handleBack(item)} disabled>back</Button>
+                      :<Button type="primary" onClick={()=>handleBack(item)}>back</Button>}
+                      
                       <Button type="primary" onClick={()=>handleDelete(item)} danger>delete</Button>
-                      <Button type="primary" onClick={()=>handleNext(item)}>next</Button>
+                      {item.stage==4
+                      ?<Button type="primary" onClick={()=>handleNext(item)} disabled>next</Button>
+                      :<Button type="primary" onClick={()=>handleNext(item)}>next</Button>}
+                      
                     </>
                   )
                 })}
