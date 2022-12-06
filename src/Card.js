@@ -3,31 +3,25 @@ import {
     Button,
     Card,
   } from 'antd';
-const Cards=({data,setData,title,stage})=>{
-  const refresh=useRef(1)
+const Cards=({data,title,stage})=>{
   const handleNext=(item)=>{
-    // let temp=data
-    // let index=temp.indexOf(item)
-    // temp.splice(index,1)
-    // setData(temp)
-    // console.log("ieu d",temp)
     
   }
   const handleDelete=(item)=>{
-    let temp=data
+    let temp=data.current
     let index=temp.indexOf(item)
     temp.splice(index,1)
-    setData(temp)
-    refresh.current=refresh.current+1
-    console.log(refresh.current)
+    // setData(temp)
+    data.current=temp
+    console.log(data.current)
   }
-  useEffect(()=>{
-    console.log("refresh")
-  },[data,setData])
+  // useEffect(()=>{
+  //   console.log("refresh")
+  // },[data,setData])
     return(
         <Card title={title} bordered={true}>
               <ul>
-                {data.filter(f=>f.stage==stage).map(item=>{
+                {data.current.filter(f=>f.stage==stage).map(item=>{
                   return (
                     <>
                       <li>{item.name}</li>
